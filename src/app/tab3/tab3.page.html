@@ -1,0 +1,90 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="profile">
+      <div class="prof-img-wrapper" [style.background-image]="'url(http://onecar.tech/uploads/'+user.photo+')'">
+      </div>
+      <div class="info">
+        <h2 *ngIf="user.name">{{user.name}} {{user.surname}}</h2>
+
+        <span class="span" (click)="goProf()">Редагувати профіль</span>
+      </div>
+    </div>
+
+    <div class="items">
+
+      <div class="card" *ngFor="let car of cars" (click)="goCar(car.id)">
+        <div class="descr">
+          <h3>{{car?.brand}} {{car?.model}}</h3>
+          <!-- <div class="icon-text">
+            <img src="../../assets/car-v.svg" alt="">
+            <p>{{getColor(car?.)color}}</p>
+          </div> -->
+            <div class="icon-text">
+              <img id="clock" src="../../assets/speed.svg" alt="">
+              <p>{{car.km}} км</p>
+            </div>
+          <div class="line">
+            <div class="icon-text">
+              <img src="../../assets/dvig.png" alt="">
+              <p>{{car?.fuel}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div (click)="goAdd()" class="add">
+        <img src="../../assets/plus.svg" alt="">
+      </div>
+    </div> 
+
+    <!--
+      НЕВИЗНАЧЕНИЙ
+      БІЛИЙ
+      ЖОВТИЙ
+      ЗЕЛЕНИЙ
+      КОРИЧНЕВИЙ
+      ОРАНЖЕВИЙ
+      СИНІЙ
+      СІРИЙ
+      ФІОЛЕТОВИЙ
+      ЧЕРВОНИЙ
+      ЧОРНИЙ
+      БЕЖЕВИЙ
+    -->
+
+    <!-- 
+      <div class="items">
+
+      <div class="card" *ngFor="let car of cars" (click)="goCar(car._id)">
+        <div class="photo">
+          <div class="car-photo" *ngIf="car.photo != 'no_photo.svg'"
+            [style.background-image]="'url(http://onecar.tech/uploads/'+car.photo+')'"></div>
+          <div class="car-photo" *ngIf="car.photo == 'no_photo.svg'"
+            [style.background-image]="'url(../assets/car-cropped.svg)'"></div>
+        </div>
+        <div class="descr">
+          <h3>{{car.brand}} {{car.model}}</h3>
+          <div class="icon-text">
+            <img src="../../assets/car-v.svg" alt="">
+            <p>{{car.color}}</p>
+          </div>
+          <div class="line">
+            <div class="icon-text">
+              <img id="clock" src="../../assets/speed.svg" alt="">
+              <p>{{car.range}} км</p>
+            </div>
+            <div class="icon-text">
+              <img src="../../assets/dvig.png" alt="">
+              <p>{{car.engine}} л </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div (click)="goAdd()" class="add">
+        <img src="../../assets/plus.svg" alt="">
+      </div>
+    </div> 
+  -->
+  </div>
+</ion-content>

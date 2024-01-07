@@ -1,0 +1,28 @@
+.wrapper {
+    padding: 7.35vh 22px;
+}
+
+.items {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#icon {
+    height: 18px;
+}
+
+.prof_photo {
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 90px;
+    width: 90px;
+    border-radius: 100px;
+    background-image: url('./../../assets/no-photo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+input[type="file"] {
+    display: none;
+}

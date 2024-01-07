@@ -1,0 +1,57 @@
+<ion-tabs (ionTabsDidChange)="tabChanged($event)" #mainTabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="tab='1';" tab="tab1">
+      <img *ngIf="tab != '1'" src="../../assets/tab1.svg">
+      <img *ngIf="tab === '1'" src="../../assets/tab1-ch.svg">
+
+      <ion-label [ngClass]="{'choosed': tab === '1'}">Головна</ion-label>
+    </ion-tab-button>
+
+    <ng-container *ngIf="isAuth">
+      <ion-tab-button (click)="tab='3';" tab="tab3">
+        <img *ngIf="tab != '3'" src="../../assets/tab3.svg">
+        <img *ngIf="tab == '3'" src="../../assets/tab3-ch.svg">
+
+        <ion-label [ngClass]="{'choosed': tab === '3'}">Профіль</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="tab='4';" tab="tab4">
+        <img *ngIf="tab != '4'" src="../../assets/tab4.svg">
+        <img *ngIf="tab == '4'" src="../../assets/tab4-ch.svg">
+
+        <ion-label [ngClass]="{'choosed': tab === '4'}">Візити</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-container *ngIf="!isAuth">
+
+      <ion-tab-button (click)="goAuth()">
+        <img *ngIf="tab != '3'" src="../../assets/tab3.svg">
+        <img *ngIf="tab == '3'" src="../../assets/tab3-ch.svg">
+
+        <ion-label [ngClass]="{'choosed': tab === '3'}">Профіль</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="goAuth()">
+        <img *ngIf="tab != '4'" src="../../assets/tab4.svg">
+        <img *ngIf="tab == '4'" src="../../assets/tab4-ch.svg">
+
+        <ion-label [ngClass]="{'choosed': tab === '4'}">Візити</ion-label>
+      </ion-tab-button>
+    </ng-container>
+
+    <ion-tab-button (click)="tab='about';" tab="about">
+      <img *ngIf="tab != 'about'" id="setts" src="../../assets/info-grey.svg">
+      <img *ngIf="tab == 'about'" id="setts" src="../../assets/info.svg">
+      <ion-label [ngClass]="{'choosed': tab === 'about'}">О нас</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="tab='2';" tab="tab2">
+      <img *ngIf="tab != '2'" id="setts" src="../../assets/tab2.svg">
+      <img *ngIf="tab == '2'" id="setts" src="../../assets/tab2-ch.svg">
+      <ion-label [ngClass]="{'choosed': tab === '2'}">Налаштування</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

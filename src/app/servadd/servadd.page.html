@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Запис до майстра</h2>
+    </div>
+    <div class="car-cards">
+      <div *ngFor="let car_item of cars" class="card" [ngClass]="{'choosed': selectedCar.id == car_item.id}"
+        (click)="carClick(car_item)">
+        <p>
+          {{car_item.brand}}<br>
+          {{car_item.model}}<br>
+          {{car_item.number}}
+        </p>
+      </div>
+    </div>
+
+    <div class="items">
+      <p class="ch_time">Оберіть дату</p>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/date.svg" alt>
+        <input [(ngModel)]="visit.date" type="date" placeholder="Оберіть дату">
+      </div>
+
+      <p class="ch_time">Оберіть час</p>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/date.svg" alt>
+        <input [(ngModel)]="visit.time" type="time" placeholder="Оберіть дату">
+      </div>
+    </div>
+
+    <div class="input-icon">
+      <input class="no_left" [(ngModel)]="comment" placeholder="Комментар до візиту">
+    </div>
+
+    <button class="btn" (click)="save()">Записатися</button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,10 @@
+{
+  "name": "cars",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

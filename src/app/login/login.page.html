@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+ <div class="wrapper">
+  <h1>Вхід</h1>
+  <img src="../../assets/onecar1.svg" alt="">
+  <div class="input_noicon">
+    <input type="text" [(ngModel)]="phone" placeholder="Введіть номер телефону" [inputMask]="phoneMask">
+  </div>
+
+  <button (click)="sendPhone()" class="btn" [disabled]="phone.length != 18 || phone.indexOf('_') != -1">Отримати СМС</button>
+  <!-- <p>або увійдіть через аккаунти</p>
+  <div class="logos">
+    <img src="../../assets/google.svg" alt="">
+    <img src="../../assets/fb.svg" alt="">
+  </div> -->
+ </div>
+</ion-content>

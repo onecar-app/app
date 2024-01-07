@@ -1,0 +1,95 @@
+<ion-content [fullscreen]="true">
+
+  <div class="wrapper">
+    <ng-container *ngIf="visit?.order?.id">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Візит {{visit.order.beginDatetime | date:"dd.MM HH:mm"}}</h2>
+    </div>
+    <div class="cards" *ngIf="visit.order.id">
+      <div class="card">
+        <div class="descr">
+          <h3 *ngIf="visit.vehicle?.id">{{visit.vehicle.make}} {{visit.vehicle.model}} {{visit.vehicle.number}}</h3>
+          <h3 *ngIf="!visit.vehicle?.id">{{visit.order.car}}</h3>
+          <!-- <div class="line">
+            <div class="icon-text">
+              <img id="clock" src="../../assets/speed.svg" alt>
+              <p>{{visit.odometer}} км</p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <span class="span">{{getStatus(visit.order.status)}}</span>
+    </div>
+
+    <ng-container *ngIf="visit.order.comment">
+
+      <h2 class="done">Коментар</h2>
+      <p>{{visit.order.comment}}</p>
+    </ng-container>
+
+    <ng-container *ngIf="visit.orderServices.length > 0">
+      <h2 class="done">Перелік робіт</h2>
+      <div class="infos">
+        <div class="info" *ngFor="let service of visit.orderServices">
+          <p class="name">{{service.serviceName}}</p>
+          <p class="price">{{service.price}} грн</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="visit.orderDetails.length > 0">
+      <h2 class="done">Матеріали та запчастини</h2>
+      <div class="infos">
+        <div class="info" *ngFor="let detail of visit.orderDetails">
+          <p class="name">{{detail.brandName}}, {{detail.productName}}</p>
+          <p class="price">{{detail.price}} грн</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="visit.order.totalSum > 0">
+      <div class="total">
+        <h5>Сума</h5>
+        <span class="span">{{visit.order.totalSum}} грн</span>
+      </div>
+
+      <!-- <button class="btn" (click)="step=2">Сплатити</button>
+
+      <div class="divider"></div>
+
+      <button class="btn wt">Акт виконаних робіт</button> -->
+    </ng-container>
+
+    <ng-container *ngIf="visit.order.totalSum > 0">
+      <div class="divider"></div>
+
+      <button class="btn wt" (click)="goPdf('diagnosticsReport')">Акт діагностики</button>
+      <button class="btn wt" (click)="goPdf('completedWorkReport')">Акт виконаних робіт</button>
+      <button class="btn wt" (click)="goPdf('invoiceReport')">Рахунок</button>
+    </ng-container>
+
+    <!--
+    <ng-container *ngIf="step == 2">
+      <h2 class="stars-h2">Оцініть якість обслуговування</h2>
+      <div class="stars">
+        <div class="star" (click)="rate=1;" [ngClass]="{'yellow': rate > 0}"></div>
+        <div class="star" (click)="rate=2;" [ngClass]="{'yellow': rate > 1}"></div>
+        <div class="star" (click)="rate=3;" [ngClass]="{'yellow': rate > 2}"></div>
+        <div class="star" (click)="rate=4;" [ngClass]="{'yellow': rate > 3}"></div>
+        <div class="star" (click)="rate=5;" [ngClass]="{'yellow': rate > 4}"></div>
+
+      </div>
+
+      <div class="comment">
+        <textarea name id rows="2" placeholder="Ваш коментар"></textarea>
+      </div>
+
+      <button class="btn send" (click)="step=1;">Надіслати</button>
+
+    </ng-container> -->
+
+
+  </ng-container>
+  </div>
+</ion-content>

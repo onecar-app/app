@@ -1,0 +1,187 @@
+.wrapper {
+    padding: 7.35vh 22px;
+}
+
+.header-back {
+    margin-bottom: 40px;
+}
+
+.card {
+    box-shadow: none;
+
+    .photo {
+        background-image: url(../../assets/car.png);
+        background-position: center;
+        background-size: cover;
+        width: 28vw;
+        min-width: 105px;
+        height: 101px;
+    }
+}
+
+.done {
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #4D5EA5;
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .name {
+            font-weight: 600;
+
+            font-size: 14px;
+            line-height: 17px;
+            // max-width: 60%;
+        }
+
+        .price {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+        }
+    }
+}
+
+.total {
+    width: 100%;
+    padding-top: 17px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h5 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        margin: 0;
+        color: #000000;
+    }
+
+    span {
+        height: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: right;
+        padding: 0px 18px;
+
+        color: #000000;
+    }
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #4D5EA5;
+}
+
+.wt {
+    margin-top: 30px;
+    background: #FFFFFF;
+    border: 1px solid #2F2F2F;
+    border-radius: 10px;
+    color: #2F2F2F;
+}
+
+.stars-h2 {
+    color: #4f4f4f;
+    margin-top: 30px;
+
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+    margin-top: 22px;
+
+    .star {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 22px;
+        height: 23px;
+        background-image: url('../../assets/star.svg');
+    }
+
+    .yellow {
+        background-image: url('../../assets/start-y.svg');
+    }
+}
+
+.comment {
+    width: 100%;
+    min-height: 80px;
+    overflow: scroll;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 22px 0;
+
+    textarea {
+        width: 100%;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #4F4F4F;
+        border: 0;
+        border-style: none;
+        resize: none;
+
+    }
+}
+
+.send {
+    margin-top: 8px;
+}
+
+#clock {
+    height: 14px;
+    width: 14px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.descr {
+    width: 100%;
+    padding-left: 0;
+}
+
+.card {
+    min-width: calc(100vw - 44px - 15px);
+    max-width: calc(100vw - 44px);
+    min-height: auto !important;
+    height: auto !important;
+}
+
+h2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}

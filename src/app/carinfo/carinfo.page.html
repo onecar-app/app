@@ -1,0 +1,154 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>{{car?.brand}} {{car?.model}} {{car?.year}}</h2>
+    </div>
+
+    <!-- <div class="car_photo" *ngIf="car.photo != 'no_photo.svg'"
+      [style.background-image]="'url(http://onecar.tech/uploads/'+car.photo+')'"></div>
+    <div class="car_photo" *ngIf="car.photo == 'no_photo.svg'"
+      [style.background-image]="'url(../assets/car-cropped.svg)'"></div> -->
+
+    <div class="info-wrapper" *ngIf="car?.carId == 0">
+
+      <div class="info">
+        <p>Модифікація</p>
+        <p class="value">{{car?.modification}}</p>
+      </div>
+
+      <div class="info">
+        <p>Паливо</p>
+        <p class="value">{{car?.fuel}}</p>
+      </div>
+
+      <!-- <div class="info">
+        <p>Колір</p>
+        <p class="value">{{car?.color}}</p>
+      </div> -->
+
+      <div class="info">
+        <p>Рік</p>
+        <p class="value">{{car?.year}}</p>
+      </div>
+
+      <div class="info" *ngIf="car.km > 0">
+        <p>Пробіг</p>
+        <p class="value">{{car?.km}} км</p>
+      </div>
+
+      <div class="info">
+        <p>Держ.номер</p>
+        <p class="value">{{car?.number}}</p>
+      </div>
+
+      <div class="info">
+        <p>VIN-код</p>
+        <p class="value">{{car?.vin}}</p>
+      </div>
+
+      <p class="infoLabel">Очікуйте на підтвердження авто</p>
+    </div>
+
+    <div class="info-wrapper" *ngIf="car?.carId > 0">
+      <div class="info">
+        <p>Двигун</p>
+        <p class="value">{{car?.vehicle.engineCode}}, {{car?.fuel}}, {{car?.volume}}</p>
+      </div>
+
+      <div class="info">
+        <p>Модифікація</p>
+        <p class="value">{{car?.vehicle.modification}}</p>
+      </div>
+
+      <div class="info">
+        <p>Потужність</p>
+        <p class="value">{{car?.vehicle.power}}</p>
+      </div>
+
+      <div class="info">
+        <p>Привід</p>
+        <p class="value">{{car?.vehicle.driveType}}</p>
+      </div>
+
+      <div class="info">
+        <p>Кузов</p>
+        <p class="value">{{car?.vehicle.bodyType}}</p>
+      </div>
+
+      <div class="info">
+        <p>Рік</p>
+        <p class="value">{{car?.year}}</p>
+      </div>
+
+      <div class="info" *ngIf="car.km > 0">
+        <p>Пробіг</p>
+        <p class="value">{{car?.km}} км</p>
+      </div>
+
+      <div class="info">
+        <p>Держ.номер</p>
+        <p class="value">{{car?.number}}</p>
+      </div>
+
+      <div class="info">
+        <p>VIN-код</p>
+        <p class="value">{{car?.vin}}</p>
+      </div>
+    </div>
+
+    <button class="btn" (click)="update()" *ngIf="car?.carId > 0">Оновити пробіг</button>
+    <button class="btn delete" (click)="delete()" *ngIf="car?.carId == 0">Видалити авто</button>
+
+    <div class="regulations" *ngIf="car?.regulations && car?.regulations.length > 0">
+      <h2>Регламентні роботи</h2>
+
+      <ng-container *ngFor="let regulation_group of car?.regulations">
+        <div class="regulation_group" *ngIf="regulation_group.regulations.length > 0">
+          <h4>{{regulation_group.groupName}}</h4>
+
+          <div class="regulation" *ngFor="let regulation of regulation_group.regulations">
+            <div class="regulation_text">
+              <p>{{regulation.regulationName}}</p>
+              <span *ngIf="regulation.availableKm > 0">залишилось {{regulation.availableKm}}
+                км</span>
+              <span *ngIf="regulation.availableKm == 0" style="color: red;">залишилось 0 км</span>
+            </div>
+            <div class="range">
+              <div class="fill" [ngStyle]="{'width': regulation.percent+'%'}" [ngClass]="{
+                'green': regulation.percent >= 70,
+                'yellow': regulation.percent < 70 && regulation.percent >= 30,
+                'red': regulation.percent < 30
+              }"></div>
+              <div class="fill"></div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div class="items" style="margin-top: 24px;" *ngIf="car?.orders?.length > 0">
+      <h2>Виконані роботи</h2>
+
+      <div class="card" *ngFor="let visit of car?.orders" [routerLink]="['servinfo', visit.id]">
+        <div class="photo white">
+          <h2>{{visit.beginDatetime | date:"dd.MM"}}</h2>
+          <h3>{{visit.beginDatetime | date:"HH:mm"}}</h3>
+
+        </div>
+        <div class="descr">
+          <h3 *ngFor="let serviceName of visit.serviceNames">{{serviceName}}</h3>
+
+          <div class="car-small">
+            <p>{{visit.vehicleMakeName}} {{visit.vehicleModelName}}
+              {{visit.vehicleNumber}}</p>
+          </div>
+          <span class="span">{{getStatus(visit.status)}}</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

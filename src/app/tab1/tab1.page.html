@@ -1,0 +1,102 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="header-main">
+      <img id="logo" src="../../assets/onecar1.svg">
+      <div class="right">
+        <img src="../../assets/bell2.svg" [routerLink]="['pushes']">
+        <div id="prof" src="../../assets/no-photo.svg" [style.background-image]="'url(http://onecar.tech/uploads/'+user?.photo+')'" (click)="goProfile()"> </div>
+      </div>
+    </div>
+
+    <swiper-container>
+      <swiper-slide><img id="banner" src="../../assets/slides/1.png"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/2.jpg"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/3.jpg"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/4.jpg"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/5.jpg"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/6.jpg"></swiper-slide>
+      <swiper-slide><img id="banner" src="../../assets/slides/7.png"></swiper-slide>
+    </swiper-container>
+
+    <h4>OneCar - простий та зрозумілий автосервіс</h4>
+
+    <p>Має міцний колектив професіоналів, гарне матеріально-технічне оснащення та ґрунтовний підхід до вирішення проблем наших клієнтів. Ми завжди називаємо речі своїми іменами та адекватно оцінюємо своє місце та роль.</p>
+
+    <button class="btn" [routerLink]="['servadd']">Записатися</button>
+
+    <h2>Час перевірити авто?</h2>
+
+    <p>Потрібно зробити діагностіку або прийшов час для регламентних робіт -
+      клік на авто та заповнюйте форму на запис до нашого центру</p>
+
+    <div class="car-cards">
+      <div class="card" *ngFor="let car of cars" [ngClass]="{'choosed': car.selected }" [routerLink]="['servadd', car.id]">
+        <!-- <img src="../../assets/car-cropped.svg" *ngIf="car.photo == 'no_photo.svg'">
+        <div class="car_img" *ngIf="car.photo != 'no_photo.svg'"
+          [style.background-image]="'url(http://onecar.tech/uploads/'+car.photo+')'">
+        </div> -->
+        <p>
+          {{car.brand}}<br>
+          {{car.model}}<br>
+          {{car.number}}
+        </p>
+      </div>
+    </div>
+
+    <h2>Персональні знижки для Вас!</h2>
+    <p>Щоб отримувати персональні знижки до Дня Народження або інших свят,
+      заповніть інформацію про себе.</p>
+    <span class="span" [routerLink]="['/profedit']">Перейти в Профіль <img src="../../assets/go.svg"></span>
+
+    <h2>Акційні пропозиції в розділі Повідомлення</h2>
+
+    <div [routerLink]="['/tabs/tab2/pushes']" class="pushes">
+      <div class="push">
+        <p>Диагностика системы электропитания со скидкой 5% </p>
+        <img src="../../assets/bell-yel.svg">
+      </div>
+      <div class="push">
+        <p>Замена жидкости АКПП и фильтра со скидкой 15%</p>
+        <img src="../../assets/bell-yel.svg">
+      </div>
+    </div>
+    <p class="mb-40" style="margin-bottom: 40px; margin-top: 122px;">Не забувайте перевіряти цей розділ для того, щоб не
+      пропустити вигідні
+      пропозиції та вигідно відремонтувати Ваше авто.</p>
+
+    <h2>Переваги нашого СТО</h2>
+
+    <div class="blocks">
+      <div class="block">
+        <img src="../../assets/block1.svg">
+        <h2>1 година</h2>
+        <p>Середній час роботи
+          над Вашими авто</p>
+      </div>
+      <div class="block">
+        <img src="../../assets/block2.svg">
+        <h2>10 механіків</h2>
+        <p>Працює для Вас</p>
+      </div>
+      <div class="block">
+        <img src="../../assets/block3.svg">
+        <h2>5 років</h2>
+        <p>Ми на ринку і можемо вирішити будь-яку проблему</p>
+      </div>
+      <div class="block">
+        <img src="../../assets/block4.svg">
+        <h2>Ціни нижче</h2>
+        <p>Якісне обслуговування та вигідні ціни </p>
+      </div>
+    </div>
+
+    <div class="about-bg">
+      <h3>OneCar - простий та зрозумілий автосервіс</h3>
+      <h6>Має міцний колектив професіоналів, гарне матеріально-технічне оснащення та ґрунтовний підхід до вирішення проблем наших клієнтів. Ми завжди називаємо речі своїми іменами та адекватно оцінюємо своє місце та роль.
+      <br>
+      <br>
+      У нас ви знайдете помірно-обґрунтовані ціни, гнучкий підхід до клієнта, досконалу прозорість нашої роботи, гарантоване виконання взятих зобов'язань точно вчасно.</h6>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,27 @@
+.wrapper {
+    //margin-top: 18.38vh;
+   // margin-bottom: 18.38vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: -webkit-fill-available;
+}
+
+img {
+    margin-bottom: 9.19vh;
+    width: calc(100vw - 44px);
+}
+
+.input_noicon p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #4F4F4F;
+}
+
+.logout {
+    margin-top: 18px;
+}

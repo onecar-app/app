@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" *ngIf="showBack">
+      <h2>О нас</h2>
+    </div>
+
+    <img id="logo" src="../../assets/onecar1.svg" alt>
+    <p>СТО OneCar на лівому березі пропонує найкращі ціни, які не відрізняються в прайсі та в чеку на оплату. Ми впевнені, що наші автослюсарі виконають роботу якісно, сертифіковані деталі відходять заявлений термін служби, а висококласне обладнання не дасть помилок, тому даємо гарантію на ремонт.</p>
+
+    <div class="line gap-11">
+      <img src="../../assets/geo.svg" alt>
+      <h6>Київ, Харківське шосе, 48В</h6>
+    </div>
+    <div class="line mb-12">
+      <img src="../../assets/clock.svg" alt>
+      <h6>Без вихідних з 8.00 до 20.00</h6>
+    </div>
+
+    <div class="line">
+      <img src="../../assets/phone.svg" alt>
+      <a href="tel:+380731615589">+38 (073) 161-55-89</a>
+    </div>
+    <div class="line">
+      <img src="../../assets/phone.svg" alt>
+      <a href="tel:+380978767984">+38 (097) 876-79-84</a>
+    </div>
+    
+    <a target="_system" href="https://www.google.com/maps/dir/?api=1&destination=50.4308801,30.6309547&travelmode=driving">
+      <div #map id="map"></div>
+    </a>
+
+    <a target="_system" href="https://www.google.com/maps/dir/?api=1&destination=50.4308801,30.6309547&travelmode=driving">
+      <button class="btn">Прокласти маршрут</button>
+    </a>
+  </div>
+</ion-content>

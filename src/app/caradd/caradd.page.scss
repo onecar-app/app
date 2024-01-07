@@ -1,0 +1,51 @@
+.wrapper {
+    padding: 7.35vh 22px;
+}
+
+.car_photo {
+    margin-top: 40px;
+    height: 212px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px dashed #4D5EA5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .car_img {
+        width: calc(100vw - 44px);
+        height: 212px;
+        max-height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        background-image: url(../../assets/car.svg);
+    }
+    #photo {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+.items {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#icon {
+    height: 18px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.input-icon{
+    input{
+        //left:20px;
+    }
+}

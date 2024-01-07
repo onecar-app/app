@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //margin-top: 14.2vh;
+}
+h1 {
+    margin-bottom: 9.19vh;
+}
+img {
+    margin-bottom: 9.19vh;
+    width: calc(100vw - 44px);
+}
+.input_noicon {
+    margin-bottom: 22px;
+}
+button {
+    margin-bottom: 15px;
+}

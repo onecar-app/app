@@ -1,0 +1,14 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+   <h1>Вхід</h1>
+   <img src="../../assets/onecar1.svg" alt="">
+   <div class="input_noicon">
+     <input [(ngModel)]="sms" type="number" placeholder="Введіть код підтвердження" (ngModelChange)="check()">
+   </div>
+ 
+   <button (click)="sendSms()" class="btn">Увійти</button>
+   <p *ngIf="counter == 60" (click)="count()">Відправити ще раз</p>
+   <p *ngIf="counter != 60">Відправити ще раз через {{counter}} сек.</p>
+
+  </div>
+ </ion-content>

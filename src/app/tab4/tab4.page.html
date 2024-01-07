@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="header-btn">
+      <p [ngClass]="{'choosed': type === '1'}" (click)="type='1';">Заплановані</p>
+      <p [ngClass]="{'choosed': type === '2'}" (click)="type='2';">Минулі</p>
+    </div>
+
+    <div *ngIf="type == '1'" class="items">
+
+      <ng-container *ngFor="let visit of visits">
+        <div (click)="servDetails(visit.id)" *ngIf="
+            visit.status != 'paid' &&
+            visit.status != 'stop' &&
+            visit.status != 'success' &&
+            visit.status != 'cancel' &&
+            visit.status != 'pause' &&
+            visit.status != 'deleted'" class="card">
+          <div class="photo white">
+            <h2>{{visit.beginDatetime | date:"dd.MM"}}</h2>
+            <h3>{{visit.beginDatetime | date:"HH:mm"}}</h3>
+
+          </div>
+          <div class="descr">
+            <h3 *ngFor="let serviceName of visit.serviceNames">{{serviceName}}</h3>
+
+            <div class="car-small">
+              <p *ngIf="visit.vehicleId">{{visit.vehicleMakeName}} {{visit.vehicleModelName}}
+                {{visit.vehicleNumber}}</p>
+              <p *ngIf="!visit.vehicleId">{{visit.car}}</p>
+            </div>
+            <span class="span">{{getStatus(visit.status)}}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div *ngIf="type == '2'" class="items">
+      <ng-container *ngFor="let visit of visits">
+        <div (click)="servDetails(visit.id)" *ngIf="
+        visit.status == 'paid' ||
+        visit.status == 'stop' ||
+        visit.status == 'success' ||
+        visit.status == 'cancel' ||
+        visit.status == 'pause' ||
+        visit.status == 'deleted'" class="card">
+          <div class="photo white">
+            <h2>{{visit.beginDatetime | date:"dd.MM"}}</h2>
+            <h3>{{visit.beginDatetime | date:"HH:mm"}}</h3>
+
+          </div>
+          <div class="descr">
+            <h3 *ngFor="let serviceName of visit.serviceNames">{{serviceName}}</h3>
+
+            <div class="car-small">
+              <p>{{visit.vehicleMakeName}} {{visit.vehicleModelName}}
+                {{visit.vehicleNumber}}</p>
+            </div>
+            <span class="span">{{getStatus(visit.status)}}</span>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <button *ngIf="type == '1'" class="btn wt" (click)="newServ()">Записатися</button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Повідомлення</h2>
+    </div>
+
+    <div class="items">
+      <div class="push" *ngFor="let push of pushes">
+        <div class="line">
+          <h4>{{push.text}}</h4>
+          <img id="bell" src="../../assets/bell.svg" alt="">
+        </div>
+        <!-- <p>Диагностика системы по скидке 5% с 25 мая до 1 июня включительно</p> -->
+        <div class="line">
+          <p class="time">{{push.date | date : 'dd.MM.yyyy'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

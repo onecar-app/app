@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Редагування авто</h2>
+    </div>
+    <div class="car_photo">
+
+
+
+    <label for="fileInputProf2">
+      <input type="file" (change)="onFileChangeProf2($event)"
+        id="fileInputProf2" accept="image/*">
+        <div class="car_img" *ngIf="car.photo != 'no_photo.svg'" [style.background-image]="'url(http://onecar.tech/uploads/'+car.photo+')'"></div>
+        <div class="car_img" *ngIf="car.photo == 'no_photo.svg'" [style.background-image]="'url(../assets/car-cropped.svg)'"></div>
+    </label>
+
+      <img id="photo" src="../../assets/camera.svg" alt>
+    </div>
+    <div class="items">
+      <div class="input-select">
+        <img src="../../assets/car-v.svg" alt>
+        <select [(ngModel)]="car.brand" name="sex" id="" placeholder="Марка авто">
+          <option *ngFor="let brand of brands" value="{{brand.name}}">{{brand.name}}</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/model.svg" alt>
+        <input [(ngModel)]="car.model" type="text" placeholder="Модель">
+      </div>
+
+      <div class="input-icon">
+        <img src="../../assets/dvig.png" alt>
+        <input [(ngModel)]="car.engine" type="text" placeholder="Об’єм двигуна (л.)">
+      </div>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/brush.svg" alt>
+        <input [(ngModel)]="car.color" type="text" placeholder="Колір">
+      </div>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/date.svg" alt>
+        <input [(ngModel)]="car.year" type="number" placeholder="Рік">
+      </div>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/speed.svg" alt>
+        <input [(ngModel)]="car.range" type="number" placeholder="Пробіг">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/numb.svg" alt>
+        <input [(ngModel)]="car.number" type="text" placeholder="Номер">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/numb.svg" alt>
+        <input [(ngModel)]="car.vin" type="text" placeholder="VIN-код">
+      </div>
+    </div>
+
+    <button class="btn" (click)="save()">Зберегти</button>
+    <button class="btn delete" (click)="delete()">Видалити</button>
+
+  </div>
+</ion-content>

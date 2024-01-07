@@ -1,0 +1,46 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Редагувати профіль</h2>
+    </div>
+
+    <!-- <label for="fileInputProf">
+      <input type="file" (change)="onFileChangeProf($event)"
+        id="fileInputProf" accept="image/*">
+      <div class="prof_photo" [style.background-image]="'url(http://onecar.tech/uploads/'+profile.photo+')'">
+      </div>
+    </label> -->
+    <div class="items">
+      <div class="input-icon">
+        <img src="../../assets/prof.svg" alt>
+        <input [(ngModel)]="profile.surname" type="text" placeholder="Прізвище">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/prof.svg" alt>
+        <input [(ngModel)]="profile.name" type="text" placeholder="Імʼя">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/prof.svg" alt>
+        <input [(ngModel)]="profile.middleName" type="text" placeholder="По батькові">
+      </div>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/phone.svg" alt>
+        <input [(ngModel)]="profile.phone" type="text"
+          placeholder="Номер телефону"  [inputMask]="phoneMask" disabled>
+      </div>
+      <!-- <div class="input-icon">
+        <img src="../../assets/email.svg" alt>
+        <input [(ngModel)]="profile.email" type="text" placeholder="Email">
+      </div>
+      <div class="input-icon">
+        <img id="icon" src="../../assets/date.svg" alt>
+        <input [(ngModel)]="profile.birthday" type="date"
+          placeholder="Дата народження">
+      </div> -->
+    </div>
+
+    <button class="btn" (click)="save()">Зберегти</button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Нове авто</h2>
+    </div>
+    <div class="items">
+      <div class="input-icon">
+        <img id="icon" src="../../assets/date.svg" alt>
+        <select [(ngModel)]="car.year" (ngModelChange)="getMakes()">
+          <option value="" selected disabled>Рік</option>
+          <option *ngFor="let year of years" [value]="year">{{year}}</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/model.svg" alt>
+        <select [(ngModel)]="car.brand" (ngModelChange)="getModels()">
+          <option value="" selected disabled>Марка</option>
+          <option *ngFor="let make of makes" [value]="make.id">{{make.name}}</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/car-v.svg" alt>
+        <select [(ngModel)]="car.model" (ngModelChange)="getModif()">
+          <option value="" selected disabled>Модель</option>
+          <option *ngFor="let model of models" [value]="model.id">{{model.name}}</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/model.svg" alt>
+        <select [(ngModel)]="car.modification">
+          <option value="" selected disabled>Модифікація</option>
+          <option *ngFor="let modification of modifications" [value]="modification.id">{{modification.name}}</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/model.svg" alt>
+        <select [(ngModel)]="car.type">
+          <option value="" selected disabled>Тип кузова</option>
+          <option value="Седан">Седан</option>
+          <option value="Позашляховик/кросовер">Позашляховик/кросовер</option>
+          <option value="Хетчбек">Хетчбек</option>
+          <option value="Універсал">Універсал</option>
+          <option value="Купе">Купе</option>
+          <option value="Пікап">Пікап</option>
+          <option value="Мінівен">Мінівен</option>
+          <option value="Кабріолет">Кабріолет</option>
+          <option value="Ліфтбек">Ліфтбек</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/dvig.png" alt>
+        <select [(ngModel)]="car.fuel">
+          <option value="" selected disabled>Паливо</option>
+          <option value="Бензин">Бензин</option>
+          <option value="Дизель">Дизель</option>
+          <option value="Газ">Газ</option>
+          <option value="Газ/бензин">Газ/бензин</option>
+          <option value="Гібрид">Гібрид</option>
+          <option value="Електро">Електро</option>
+        </select>
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/numb.svg" alt>
+        <input [(ngModel)]="car.number" type="text" placeholder="Номер">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/numb.svg" alt>
+        <input [(ngModel)]="car.vin" type="text" placeholder="VIN-код">
+      </div>
+      <div class="input-icon">
+        <img src="../../assets/speed.svg" alt>
+        <input [(ngModel)]="car.km" type="number" placeholder="Пробіг">
+      </div>
+    </div>
+
+    <button class="btn" (click)="save()">Зберегти</button>
+
+  </div>
+</ion-content>
