@@ -13,8 +13,18 @@ export class PushesPage implements OnInit {
   pushes:any = [];
 
   constructor(private navCtrl: NavController, public request:RequestService) {
+    this.getData();
+  }
+
+  getData(){
     this.request.get('get_notifications/'+localStorage.getItem('token')).then(res => {
       this.pushes = res.data;
+    })
+  }
+
+  deleteNotif(id){
+    this.request.get('delete_notifications/'+id).then(res => {
+      this.getData();
     })
   }
 

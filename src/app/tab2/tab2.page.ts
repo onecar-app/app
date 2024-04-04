@@ -29,6 +29,10 @@ export class Tab2Page {
     }
   }
 
+  goFeedback() {
+    this.router.navigateByUrl('tabs/tab2/feedback');
+  }
+
   goRules() {
     this.router.navigateByUrl('tabs/tab2/rules');
   }

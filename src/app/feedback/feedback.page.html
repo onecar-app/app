@@ -1,0 +1,15 @@
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div (click)="back()" class="header-back">
+      <img src="../../assets/back.svg" alt>
+      <h2>Зворотній зв'язок</h2>
+    </div>
+
+
+    <p class="ch_time">Введіть ваше повідомлення</p>
+    <textarea [(ngModel)]="message" cols="30" rows="10"></textarea>
+
+
+    <button class="btn" (click)="send()" [disabled]="message == ''">Відправити повідомлення</button>
+  </div>
+</ion-content>

@@ -86,7 +86,7 @@ export class CarinfoPage implements OnInit {
                 custom: true
               }, {
                 headers: {
-                  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIxZThmOTM0MS0xMTBhLTRjMTQtYmMxMy0wZDRiMTg5NGY1YTkiLCJpYXQiOjE2OTg4Mjc5NTl9.KyFWAZt33f5tKZCX5koZymvg4xb0POIzp_xDW46ZTfA'
+                  'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYWEzODY2OS05MzU2LTQ3YjctYjQ3Ni05MTk1YTExY2YzMDkiLCJpYXQiOjE3MDYxMTI0MDV9.NMD3TdvhtX5vGYJOTvFYzKBDvjciMGoYkzCWAqfCt9w'
                 }
               }).subscribe(async res => {
                 await (await this.alertCtrl.create({
@@ -94,6 +94,12 @@ export class CarinfoPage implements OnInit {
                   message: 'Пробіг авто успішно оновлено',
                   buttons: ["OK"]
                 })).present();
+
+                setTimeout(async () => {
+                  await this.http.get('check_reglaments/'+this.car.carId).then(res => { })
+                }, 2000);
+
+
                 this.getCar();
               })
             } else {

@@ -26,3 +26,12 @@
 input[type="file"] {
     display: none;
 }
+
+.del{
+    position: absolute;
+    bottom: 80px;
+    color: red;
+    background: transparent;
+    border: 0;
+    font-weight: 400;
+}

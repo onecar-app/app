@@ -3,6 +3,7 @@
     <img src="../../assets/onecar1.svg" alt="">
     <div class="items">
       <!-- <div class="input_noicon"><p>Змінити мову</p></div> -->
+      <div class="input_noicon" (click)="goFeedback()"><p>Зворотній зв'язок</p></div>
       <div class="input_noicon" (click)="goRules()"><p>Правила користування</p></div>
       <div class="input_noicon" (click)="goPushes()"><p>Повідомлення</p></div>
       <div *ngIf="isAuth" class="input_noicon logout" (click)="goLogin()"><p>Вийти</p></div>

@@ -2,13 +2,22 @@
     padding: 7.35vh 22px;
 }
 
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
 .descr {
     width: 100%;
 }
+
 .profile {
     display: flex;
     flex-direction: row;
-    gap:15px;
+    gap: 15px;
     align-items: center;
     justify-content: flex-start;
 }
@@ -45,6 +54,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 10px 0px 0px 10px;    
+    border-radius: 10px 0px 0px 10px;
     background-image: url(../../assets/car-cropped.svg);
 }

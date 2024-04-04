@@ -1,0 +1,33 @@
+.wrapper {
+    padding: 7.35vh 22px;
+}
+
+.header-back {
+    margin-bottom: 40px;
+}
+.rules {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    p {
+        color: #000;
+    }
+}
+
+textarea{
+    margin-top: 16px;
+    border: 0;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+
+.btn{
+    margin-top: 32px;
+}

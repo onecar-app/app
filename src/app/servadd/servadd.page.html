@@ -16,16 +16,27 @@
     </div>
 
     <div class="items">
-      <p class="ch_time">Оберіть дату</p>
-      <div class="input-icon">
+      <p class="ch_time">Оберіть дату та час</p>
+
+      <ion-datetime-button color="'white'" datetime="datetime">DATE</ion-datetime-button>
+
+      <!-- <div class="input-icon">
         <img id="icon" src="../../assets/date.svg" alt>
-        <input [(ngModel)]="visit.date" type="date" placeholder="Оберіть дату">
+        <input [(ngModel)]="visit.date" lang="uk" type="date" placeholder="Оберіть дату">
       </div>
 
       <p class="ch_time">Оберіть час</p>
       <div class="input-icon">
         <img id="icon" src="../../assets/date.svg" alt>
-        <input [(ngModel)]="visit.time" type="time" placeholder="Оберіть дату">
+        <input [(ngModel)]="visit.time" lang="uk" type="time" placeholder="Оберіть дату">
+      </div> -->
+
+      <p class="ch_time">Оберіть послугу</p>
+      <div class="input-icon icon-end">
+        <select [(ngModel)]="visit.serviceId">
+          <option *ngFor="let service of services" [value]="service.id">{{service.name}}</option>
+        </select>
+        <img id="icon" src="../../assets/down.svg" alt>
       </div>
     </div>
 
@@ -36,4 +47,11 @@
     <button class="btn" (click)="save()">Записатися</button>
 
   </div>
+
+  
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="datetime" [(ngModel)]="datetime" locale="uk-UA" show-default-buttons="true" done-text="Ок" cancel-text="Закрити"></ion-datetime>
+    </ng-template>
+  </ion-modal>
 </ion-content>

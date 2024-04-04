@@ -12,6 +12,12 @@
 
     <div class="items">
 
+      <div class="card" style="min-height: fit-content;">
+        <div class="descr" [ngClass]="{'red' : user.balance < 0, 'green' : user.balance > 0}">
+          Баланс: {{user.balance}}₴
+        </div>
+      </div>
+
       <div class="card" *ngFor="let car of cars" (click)="goCar(car.id)">
         <div class="descr">
           <h3>{{car?.brand}} {{car?.model}}</h3>

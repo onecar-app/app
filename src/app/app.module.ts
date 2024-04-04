@@ -13,12 +13,13 @@ import { TabsPageModule } from './tabs/tabs.module';
 import { InputMaskModule } from '@ngneat/input-mask';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, InputMaskModule, PdfViewerModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, TabsPageModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, TabsPageModule, Keyboard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

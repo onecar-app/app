@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'pushes',
     loadChildren: () => import('../pushes/pushes.module').then( m => m.PushesPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('../feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
 ];
 

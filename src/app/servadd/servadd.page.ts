@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { RequestService } from '../services/generall.service';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-servadd',
@@ -13,12 +14,15 @@ export class ServaddPage implements OnInit {
   public user: any = { 'photo': 'no_photo.svg' };
   public cars: any = [];
   public servs: any = [];
+  public services: any = [];
+  datetime = moment().add(1, 'days').toISOString();
 
   public visit: any = {
     date: '',
     time: '',
     car: '',
-    comment: ''
+    comment: '',
+    serviceId: ''
   };
 
   selectedCar: any = {};
@@ -34,6 +38,7 @@ export class ServaddPage implements OnInit {
     //this.times = ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00']
     //this.vtime = this.times[0];
     this.getCars();
+    this.getServices();
   }
 
   ngOnInit() {
@@ -45,6 +50,13 @@ export class ServaddPage implements OnInit {
 
   carClick(car: any) {
     this.selectedCar = car;
+  }
+
+  getServices() {
+    this.http.get('services').then(async (services) => {
+      this.services = services.data;
+      this.visit.serviceId = services.data[0].id
+    });
   }
 
   getCars() {
@@ -59,8 +71,8 @@ export class ServaddPage implements OnInit {
 
       if (res.data.length != null) {
 
-        if(id){
-          this.selectedCar = await this.cars.filter((car:any) => car.id == id)[0];
+        if (id) {
+          this.selectedCar = await this.cars.filter((car: any) => car.id == id)[0];
           console.log(id);
           console.log(this.selectedCar);
         } else {
@@ -74,7 +86,13 @@ export class ServaddPage implements OnInit {
 
   }
 
-  save() {
+  async save() {
+
+
+    this.visit.date = moment(this.datetime).format('YYYY-MM-DD')
+    this.visit.time = moment(this.datetime).format('HH:mm')
+
+    let service = await this.services.filter((service: any) => service.id == this.visit.serviceId)[0];
 
     if (this.selectedCar.carId > 0) {
       this.visit.car = this.selectedCar.carId;
@@ -83,6 +101,8 @@ export class ServaddPage implements OnInit {
       this.visit.car = '';
       this.visit.comment += ' | ' + this.selectedCar.brand + '  ' + this.selectedCar.model + ' ' + this.selectedCar.year + ', VIN ' + this.selectedCar.vin;
     }
+
+    this.visit.comment += ' | ' + service.name;
 
     console.log(this.visit);
 

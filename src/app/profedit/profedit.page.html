@@ -38,9 +38,11 @@
         <input [(ngModel)]="profile.birthday" type="date"
           placeholder="Дата народження">
       </div> -->
-    </div>
 
     <button class="btn" (click)="save()">Зберегти</button>
+
+    <button class="btn del" (click)="delete()" *ngIf="isKeyboardHide">Видалити акаунт</button>
+    </div>
 
   </div>
 </ion-content>

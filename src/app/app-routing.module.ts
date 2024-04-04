@@ -57,6 +57,10 @@ const routes: Routes = [
   {
     path: 'caredit',
     loadChildren: () => import('./caredit/caredit.module').then( m => m.CareditPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
 ];
 @NgModule({

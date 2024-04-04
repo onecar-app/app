@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { RequestService } from '../services/generall.service';
 import { createMask } from '@ngneat/input-mask';
+import { EventsService } from '../services/events.service';
+import { TabsPage } from '../tabs/tabs.page';
+import { Router } from '@angular/router';
+import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 
 @Component({
   selector: 'app-profedit',
@@ -16,15 +20,33 @@ export class ProfeditPage implements OnInit {
   public birthday: string = '';
   phoneMask = createMask('+38(099) 999-99-99');
   token = localStorage.getItem('token');
+  isKeyboardHide = true;
 
   public profile: any = {'photo': 'no_photo.svg'};
 
   constructor(private navCtrl: NavController,
-    private http: RequestService) {
+    public alertCtrl:AlertController,
+    private http: RequestService,
+    public keyboard:Keyboard,
+    private router: Router,
+    public events:EventsService,
+    public tabs:TabsPage) {
     this.getInfo();
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.keyboard.onKeyboardWillShow().subscribe(()=>{
+      this.isKeyboardHide=false;
+      // console.log('SHOWK');
+    });
+
+    this.keyboard.onKeyboardWillHide().subscribe(()=>{
+      this.isKeyboardHide=true;
+      // console.log('HIDEK');
+    });
   }
 
   getInfo() {
@@ -86,5 +108,29 @@ export class ProfeditPage implements OnInit {
 
   back() {
     this.navCtrl.back();
+  }
+
+  async delete(){
+    await(
+      await this.alertCtrl.create({
+        header:'Видалення аккаунту',
+        message:'Ви впевнені що хочете видалити акаунт?',
+        buttons:[{
+          text:'Видалити',
+          handler:() => {
+            this.http.get('delete_account/'+this.token).then((res) => {
+              localStorage.clear();
+              this.events.pushData({event:'logout'});
+              this.tabs.tab = '1';
+              this.router.navigateByUrl('tabs/tab1');
+            }).catch((err) => {
+              //alert('Wrong code!')
+            });
+          }
+        },{
+          text:'Відміна'
+        }]
+      })
+    ).present();
   }
 }
