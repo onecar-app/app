@@ -12,12 +12,8 @@ register();
 })
 export class AppComponent {
   constructor(public http: HttpClient, public request:RequestService) {
-    this.http.get('https://api.carbook.pro/business_substatuses', {
 
-      headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYWEzODY2OS05MzU2LTQ3YjctYjQ3Ni05MTk1YTExY2YzMDkiLCJpYXQiOjE3MDYxMTI0MDV9.NMD3TdvhtX5vGYJOTvFYzKBDvjciMGoYkzCWAqfCt9w'
-      }
-    }).subscribe(res => {
+    this.request.get('business_substatuses').then(res => {
       console.log(res);
     })
 

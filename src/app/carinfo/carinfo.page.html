@@ -53,7 +53,7 @@
     <div class="info-wrapper" *ngIf="car?.carId > 0">
       <div class="info">
         <p>Двигун</p>
-        <p class="value">{{car?.vehicle.engineCode}}, {{car?.fuel}}, {{car?.volume}}</p>
+        <p class="value">{{car?.info?.engineCode}}, {{car?.info?.fuelType}}, {{car?.info?.capacityTechnical}}</p>
       </div>
 
       <div class="info">
@@ -63,17 +63,17 @@
 
       <div class="info">
         <p>Потужність</p>
-        <p class="value">{{car?.vehicle.power}}</p>
+        <p class="value">{{car?.info?.power}}</p>
       </div>
 
       <div class="info">
         <p>Привід</p>
-        <p class="value">{{car?.vehicle.driveType}}</p>
+        <p class="value">{{car?.info?.driveType}}</p>
       </div>
 
       <div class="info">
         <p>Кузов</p>
-        <p class="value">{{car?.vehicle.bodyType}}</p>
+        <p class="value">{{car?.info?.bodyType}}</p>
       </div>
 
       <div class="info">
@@ -88,12 +88,12 @@
 
       <div class="info">
         <p>Держ.номер</p>
-        <p class="value">{{car?.number}}</p>
+        <p class="value">{{car?.info?.vehicleNumber}}</p>
       </div>
 
       <div class="info">
         <p>VIN-код</p>
-        <p class="value">{{car?.vin}}</p>
+        <p class="value">{{car?.info?.vin}}</p>
       </div>
     </div>
 

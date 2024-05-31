@@ -73,7 +73,34 @@ export class CaraddPage implements OnInit {
     }
   }
 
-  getYears() {
+  getYears(){
+    this.http.get('vehicles_info').then(res => {
+      this.years = res.data.years;
+      this.car.brand = this.car.model = this.car.modification = "";
+    })
+  }
+
+  getMakes(){
+    this.http.get("vehicles_info/type=All&year=" + this.car.year).then(res => {
+      this.makes = res.data.makes;
+      this.car.model = this.car.modification = "";
+    })
+  }
+
+  getModels(){
+    this.http.get("vehicles_info/type=All&year=" + this.car.year + "&makeId=" + this.car.brand).then(res => {
+      this.models = res.data.models;
+      this.car.modification = "";
+    })
+  }
+
+  getModif(){
+    this.http.get("vehicles_info/type=All&year=" + this.car.year + "&makeId=" + this.car.brand + "&modelId=" + this.car.model).then(res => {
+      this.modifications = res.data.modifications;
+    })
+  }
+
+  getYears_OLD() {
     this.httpClient.get("https://api.carbook.pro/vehicles_info", {
       headers: {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYWEzODY2OS05MzU2LTQ3YjctYjQ3Ni05MTk1YTExY2YzMDkiLCJpYXQiOjE3MDYxMTI0MDV9.NMD3TdvhtX5vGYJOTvFYzKBDvjciMGoYkzCWAqfCt9w'
@@ -84,7 +111,7 @@ export class CaraddPage implements OnInit {
     })
   }
 
-  getMakes() {
+  getMakes_OLD() {
     this.httpClient.get("https://api.carbook.pro/vehicles_info?type=All&year=" + this.car.year, {
       headers: {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYWEzODY2OS05MzU2LTQ3YjctYjQ3Ni05MTk1YTExY2YzMDkiLCJpYXQiOjE3MDYxMTI0MDV9.NMD3TdvhtX5vGYJOTvFYzKBDvjciMGoYkzCWAqfCt9w'
@@ -95,7 +122,7 @@ export class CaraddPage implements OnInit {
     })
   }
 
-  getModels() {
+  getModels_OLD() {
     this.httpClient.get("https://api.carbook.pro/vehicles_info?type=All&year=" + this.car.year + "&makeId=" + this.car.brand, {
       headers: {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYWEzODY2OS05MzU2LTQ3YjctYjQ3Ni05MTk1YTExY2YzMDkiLCJpYXQiOjE3MDYxMTI0MDV9.NMD3TdvhtX5vGYJOTvFYzKBDvjciMGoYkzCWAqfCt9w'
@@ -106,7 +133,7 @@ export class CaraddPage implements OnInit {
     })
   }
 
-  getModif() {
+  getModif_OLD() {
 
     this.httpClient.get("https://api.carbook.pro/vehicles_info?type=All&year=" + this.car.year + "&makeId=" + this.car.brand + "&modelId=" + this.car.model, {
       headers: {

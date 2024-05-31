@@ -17,7 +17,7 @@ export class RequestService {
             duration: 3000,
         });
 
-        loading.present();
+        //loading.present();
     }
 
     get(path: string, loader = true) {

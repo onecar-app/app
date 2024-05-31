@@ -79,6 +79,28 @@ export class CarinfoPage implements OnInit {
           text: 'Підтвердити',
           handler: async (data) => {
             if (data.km > this.car.km) {
+
+              this.http.post('updatekm', {
+                vehicleId: this.car.carId,
+                mileage: Number(data.km),
+                date: moment().format('YYYY-MM-DD'),
+                custom: true
+              }).then(async (res) => {
+                await (await this.alertCtrl.create({
+                  header: 'Оновлення пробігу',
+                  message: 'Пробіг авто успішно оновлено',
+                  buttons: ["OK"]
+                })).present();
+
+                
+                setTimeout(async () => {
+                  await this.http.get('check_reglaments/'+this.car.carId).then(res => { })
+                }, 2000);
+
+                this.getCar();
+              });
+
+              /*
               this.httpClient.post('https://api.carbook.pro/mileage/history', {
                 vehicleId: this.car.carId,
                 mileage: Number(data.km),
@@ -102,6 +124,8 @@ export class CarinfoPage implements OnInit {
 
                 this.getCar();
               })
+              */
+             
             } else {
               await (await this.alertCtrl.create({
                 header: 'Помилка оновлення пробігу',
@@ -150,8 +174,8 @@ export class CarinfoPage implements OnInit {
     ).present();
   }
 
-  getStatus(status:String){
-    switch(status){
+  getStatus(status: String) {
+    switch (status) {
       case 'not_complete': return 'Не завершено'; break;
       case 'reserve': return 'Заплановано'; break;
       case 'call': return 'Заплановано'; break;

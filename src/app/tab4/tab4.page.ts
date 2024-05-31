@@ -39,10 +39,11 @@ export class Tab4Page implements OnInit {
       this.visits = [];
       
       for await(let visit of res.data){
-        if(visit.vehicleId == null && visit.comment.indexOf('FROM APP') == -1){
+        if(visit.vehicleId == null && visit.comment.indexOf('| ') > -1){
           let car = visit.comment.split("| ");
-          car = car[1].split(",");
-          visit.car = car[0];
+          //car = car[1].split(",");
+          visit.car = car[1];
+          console.log(visit);
           this.visits.push(visit);
         } else if (visit.vehicleId != null) {
           this.visits.push(visit);

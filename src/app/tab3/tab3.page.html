@@ -29,7 +29,13 @@
               <img id="clock" src="../../assets/speed.svg" alt="">
               <p>{{car.km}} км</p>
             </div>
-          <div class="line">
+          <div class="line" *ngIf="car?.info?.fuelType">
+            <div class="icon-text">
+              <img src="../../assets/dvig.png" alt="">
+              <p>{{car?.info?.fuelType}} {{car?.info?.capacityTechnical}}</p>
+            </div>
+          </div>
+          <div class="line" *ngIf="!car?.info?.fuelType">
             <div class="icon-text">
               <img src="../../assets/dvig.png" alt="">
               <p>{{car?.fuel}}</p>

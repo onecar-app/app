@@ -42,8 +42,8 @@
       <h2 class="done">Матеріали та запчастини</h2>
       <div class="infos">
         <div class="info" *ngFor="let detail of visit.orderDetails">
-          <p class="name">{{detail.brandName}}, {{detail.productName}}</p>
-          <p class="price">{{detail.price}} грн</p>
+          <p class="name">{{detail.detailName}}</p>
+          <p class="price"><ng-container *ngIf="detail.count > 0">{{detail.count}} {{detail.measureUnit}} х</ng-container> {{detail.price}} грн</p>
         </div>
       </div>
     </ng-container>

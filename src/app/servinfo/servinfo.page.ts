@@ -35,7 +35,7 @@ export class ServinfoPage implements OnInit {
     this.http.get("visit/" + localStorage.getItem('token') + "/" + this.id).then(async (res: any) => {
       let order = res.data.order;
 
-      if (res?.data?.vehicle?.id == null && order.comment.indexOf('FROM APP') == -1) {
+      if(order?.comment?.indexOf('| ') > -1){
         let comment = order.comment.split("| ");
         if(comment[0] != ' '){
           order.comment = comment[0];
@@ -43,8 +43,27 @@ export class ServinfoPage implements OnInit {
           order.comment = '';
         }
 
-        let car = comment[1].split(",");
-        order.car = car[0];
+        if(!res?.data?.vehicle?.id){
+          order.car = comment[1];
+        }
+      }
+
+      if (res?.data?.vehicle?.id == null && order?.comment?.indexOf('| ') == -1) {
+
+        console.log('asd');
+        
+
+        let comment = order.comment.split("| ");
+        if(comment[0] != ' '){
+          order.comment = comment[0];
+        } else {
+          order.comment = '';
+        }
+
+        console.log(order);
+
+        // let car = comment[1].split(",");
+        // order.car = car[0];
 
       }
 

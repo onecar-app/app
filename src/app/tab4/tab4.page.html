@@ -52,8 +52,9 @@
             <h3 *ngFor="let serviceName of visit.serviceNames">{{serviceName}}</h3>
 
             <div class="car-small">
-              <p>{{visit.vehicleMakeName}} {{visit.vehicleModelName}}
+              <p *ngIf="visit.vehicleId">{{visit.vehicleMakeName}} {{visit.vehicleModelName}}
                 {{visit.vehicleNumber}}</p>
+              <p *ngIf="!visit.vehicleId">{{visit.car}}</p>
             </div>
             <span class="span">{{getStatus(visit.status)}}</span>
           </div>
